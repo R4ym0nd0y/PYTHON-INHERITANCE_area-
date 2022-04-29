@@ -1,0 +1,51 @@
+import math
+
+
+# PARENT CLASS
+class Circle:
+    def __init__(self, radius, pi):
+        self.radius = radius
+        self.pi = pi
+
+    # AREA OF THE CIRCLE
+    def area(self):
+        return math.pi * (self.radius ** 2)
+
+    # CIRCUMFERENCE OF THE CIRCLE:
+    def circumference(self):
+        return 2 * math.pi * self.radius
+
+
+# CHILD CLASS
+class Cone(Circle):
+    def __init__(self, radius, height, pi):
+        super().__init__(radius, pi)
+        self.radius = radius
+        self.height = height
+        self.pi = pi
+
+    # AREA OF THE CONE :
+    def cone_area(self):
+        return math.pi * self.radius * (self.radius + math.sqrt(self.height ** 2 + self.radius ** 2))
+
+    # VOLUME OF THE CONE
+    def volume(self):
+        return 1 / 3 * (self.height * math.pi * (self.radius ** 2))
+
+
+# PROCESS
+# area and circumference of the circle
+Radius = int(input("Input your radius:"))
+Pi = math.pi
+Parent_Circle = Circle(Radius, Pi)
+print("The area of the circle is:", round(Parent_Circle.area(), 2))
+print("The circumference of the circle is:", round(Parent_Circle.circumference(), 2))
+print("--------------------------------------------------------------------")
+
+# Area and Volume of the cone
+Radius_Cone = int(input("Input your radius for the cone:"))
+Height_Cone = int(input("Input your height for the cone:"))
+Pi_Cone = math.pi
+Child_Cone = Cone(Radius_Cone, Height_Cone, Pi_Cone)
+print("The total surface area of the cone is:", round(Child_Cone.cone_area(), 2))
+print("The volume of the cone is:", round(Child_Cone.volume(), 2))
